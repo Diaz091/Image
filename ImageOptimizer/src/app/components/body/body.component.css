@@ -1,0 +1,26 @@
+/* .upload-btn-wrapper {
+    border: dotted 3px lightgray;
+    background-image: url('/home/udiaz/Pruebas/HardStuck/src/assets/img/drop-images.png');
+    overflow: hidden;
+} */
+
+.upload-btn-wrapper {
+    border: dotted 3px lightgray;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom: 6px;
+}
+
+.upload-btn-wrapper input[type=file] {
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.file-over {
+    border: dotted 3px dodgerblue;
+}
+
+.table {
+    margin-top: 5%;
+}
