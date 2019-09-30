@@ -42,18 +42,23 @@ export class BodyComponent implements OnInit {
     // Gets the value of Height input if null or < 1024
     const height = ( ( document.getElementById( 'height' ) as HTMLInputElement ).value) ;
     let ratio: number;
+    console.log( 'Input --> ' + height );
     const myImg = document.getElementById('img') as HTMLImageElement;
     // Image Default Width
-    const realWidth = myImg.naturalWidth;
+    // const realWidth = myImg.naturalWidth;
     // Image Default Height
     const defaultHeight = myImg.naturalHeight;
+    console.log( 'Default Height --> ' + defaultHeight );
     // When no height introduced or < 1024
     // tslint:disable-next-line: radix
-    if ( height !== ' '  || parseInt( height ) < 1024) {
+    if ( height === ' '  || parseInt( height ) < 1024) {
       ratio = (100 / ( defaultHeight / 1024 ) );
+      console.log( 'Ratio --> ' + ratio );
     } else {
       // tslint:disable-next-line: radix
       ratio = (100 / ( defaultHeight / parseInt( height ) ) );
+      console.log( 'Ratio <--> ' + ratio );
+
     }
 
     // tslint:disable-next-line: prefer-const
