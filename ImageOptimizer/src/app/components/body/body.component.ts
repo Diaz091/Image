@@ -15,7 +15,7 @@ export class BodyComponent implements OnInit {
   imgURL: any = 'assets/img/preview.png';
   imgURLCompress: any = 'assets/img/preview.png';
   archivos: FileItem[] = [];
-
+  num = '';
 
   constructor(private imageCompress: NgxImageCompressService) {}
 
@@ -42,14 +42,14 @@ export class BodyComponent implements OnInit {
 compressFile( ) {
     const height = ( ( document.getElementById( 'height' ) as HTMLInputElement ).value);
     let ratio: number;
+    console.log( this.num );
     const myImg = document.getElementById('img') as HTMLImageElement;
-    console.log( 'asdas' + height );
-    // Image Default Width
+// Image Default Width
     const defaultWidth = myImg.naturalWidth;
     // Image Default Height
     const defaultHeight = myImg.naturalHeight;
     // tslint:disable-next-line: radix
-    if ( height === ' ' || parseInt( height ) < 1024) {
+    if ( this.num === ' ' || parseInt( this.num ) < 1024) {
 
       if ( defaultWidth > defaultHeight) {
           ratio = (100 / ( defaultWidth / 1024 ) );
@@ -60,10 +60,10 @@ compressFile( ) {
     } else {
       if ( defaultWidth > defaultHeight) {
         // tslint:disable-next-line: radix
-        ratio = (100 / ( defaultWidth / parseInt( height ) ) );
+        ratio = (100 / ( defaultWidth / parseInt( this.num ) ) );
       } else {
         // tslint:disable-next-line: radix
-        ratio = (100 / ( defaultHeight / parseInt( height ) ) );
+        ratio = (100 / ( defaultHeight / parseInt( this.num ) ) );
       }
 
       // tslint:disable-next-line: prefer-const
