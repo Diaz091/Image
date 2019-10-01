@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {FormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { BodyComponent } from './components/body/body.component';
@@ -28,7 +29,8 @@ import {NgxImageCompressService, } from 'ngx-image-compress';
     MatListModule,
     MatButtonModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    FormsModule
   ],
   providers: [NgxImageCompressService],
   bootstrap: [AppComponent]
