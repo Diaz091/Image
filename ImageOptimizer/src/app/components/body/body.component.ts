@@ -35,7 +35,6 @@ export class BodyComponent implements OnInit {
       this.message = 'Only images are supported.';
       return;
     }
-
     const READER = new FileReader();
     this.imagePath = files;
     READER.readAsDataURL(files[0]);
@@ -45,48 +44,46 @@ export class BodyComponent implements OnInit {
     };
   }
 
+  clearInput() {
+    this.imgURL = 'assets/img/preview.png';
+    this.imgURLCompress = 'assets/img/preview.png';
+    this.archivos = [];
+  }
+
   // Compress Function
   compressFile() {
-    const height = ((document.getElementById('height') as HTMLInputElement).value);
     let ratio: number;
-    console.log(this.num);
     const myImg = document.getElementById('img') as HTMLImageElement;
-    // Image Default Width
+    // Default Image Width
     const defaultWidth = myImg.naturalWidth;
-    // Image Default Height
+    // Default Image Height
     const defaultHeight = myImg.naturalHeight;
     // tslint:disable-next-line: radix
-    if (this.num === ' ' || parseInt(this.num) < 1024) {
+    const numParsed = parseInt(this.num);
+    if ( !isNaN( numParsed ) &&  numParsed > 1024 )  {
 
-      if (defaultWidth > defaultHeight) {
-        ratio = (100 / (defaultWidth / 1024));
+      // Comprobamos cual de los lados es mayor.
+      if ( defaultHeight > defaultWidth ) {
+        ratio = (100 / (defaultHeight / numParsed ) );
       } else {
-        ratio = (100 / (defaultHeight / 1024));
+        ratio = (100 / (defaultWidth / numParsed ) );
       }
 
-    } else {
-      if (defaultWidth > defaultHeight) {
-        // tslint:disable-next-line: radix
-        ratio = (100 / (defaultWidth / parseInt(this.num)));
+    } else { // If they don't insert any Height(Input) or Height(Input) < 1024
+      if ( defaultHeight > defaultWidth ) {
+        ratio = (100 / (defaultHeight / 1024));
       } else {
-        // tslint:disable-next-line: radix
-        ratio = (100 / (defaultHeight / parseInt(this.num)));
+        ratio = (100 / (defaultWidth / 1024));
       }
     }
 
     // tslint:disable-next-line: prefer-const
     let orientation: any;
     this.imageCompress.compressFile(this.imgURL, orientation, ratio, 100).then(
-        result => {
+      result => {
           this.imgURLCompress = result;
         }
       );
-  }
-
-  clearInput() {
-    this.imgURL = 'assets/img/preview.png';
-    this.imgURLCompress = 'assets/img/preview.png';
-    this.archivos = [];
   }
 
   ngOnInit() {}
