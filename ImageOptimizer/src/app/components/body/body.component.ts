@@ -1,7 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { NgxImageCompressService } from 'ngx-image-compress';
-import { FileItem } from 'src/app/models/file-item';
-import {FormsModule} from '@angular/forms'
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  NgxImageCompressService
+} from 'ngx-image-compress';
+import {
+  FileItem
+} from 'src/app/models/file-item';
+
 
 @Component({
   selector: 'app-body',
@@ -19,12 +26,12 @@ export class BodyComponent implements OnInit {
 
   constructor(private imageCompress: NgxImageCompressService) {}
 
-  preview( files ) {
+  preview(files) {
     if (files.length === 0) {
       return;
     }
-    const MIMETYPE = files[ 0 ].type;
-    if ( MIMETYPE.match( /image\/*/ ) == null ) {
+    const MIMETYPE = files[0].type;
+    if (MIMETYPE.match(/image\/*/) == null) {
       this.message = 'Only images are supported.';
       return;
     }
@@ -39,49 +46,48 @@ export class BodyComponent implements OnInit {
   }
 
   // Compress Function
-compressFile( ) {
-    const height = ( ( document.getElementById( 'height' ) as HTMLInputElement ).value);
+  compressFile() {
+    const height = ((document.getElementById('height') as HTMLInputElement).value);
     let ratio: number;
-    console.log( this.num );
+    console.log(this.num);
     const myImg = document.getElementById('img') as HTMLImageElement;
-// Image Default Width
+    // Image Default Width
     const defaultWidth = myImg.naturalWidth;
     // Image Default Height
     const defaultHeight = myImg.naturalHeight;
     // tslint:disable-next-line: radix
-    if ( this.num === ' ' || parseInt( this.num ) < 1024) {
+    if (this.num === ' ' || parseInt(this.num) < 1024) {
 
-      if ( defaultWidth > defaultHeight) {
-          ratio = (100 / ( defaultWidth / 1024 ) );
-        } else {
-          ratio = (100 / ( defaultHeight / 1024 ) );
-        }
-
-    } else {
-      if ( defaultWidth > defaultHeight) {
-        // tslint:disable-next-line: radix
-        ratio = (100 / ( defaultWidth / parseInt( this.num ) ) );
+      if (defaultWidth > defaultHeight) {
+        ratio = (100 / (defaultWidth / 1024));
       } else {
-        // tslint:disable-next-line: radix
-        ratio = (100 / ( defaultHeight / parseInt( this.num ) ) );
+        ratio = (100 / (defaultHeight / 1024));
       }
 
-      // tslint:disable-next-line: prefer-const
-      let orientation: any ;
-      this.imageCompress.compressFile(this.imgURL, orientation, ratio , 100).then(
+    } else {
+      if (defaultWidth > defaultHeight) {
+        // tslint:disable-next-line: radix
+        ratio = (100 / (defaultWidth / parseInt(this.num)));
+      } else {
+        // tslint:disable-next-line: radix
+        ratio = (100 / (defaultHeight / parseInt(this.num)));
+      }
+    }
+
+    // tslint:disable-next-line: prefer-const
+    let orientation: any;
+    this.imageCompress.compressFile(this.imgURL, orientation, ratio, 100).then(
         result => {
           this.imgURLCompress = result;
         }
       );
-    }
   }
 
-clearInput() {
+  clearInput() {
     this.imgURL = 'assets/img/preview.png';
     this.imgURLCompress = 'assets/img/preview.png';
     this.archivos = [];
   }
 
-ngOnInit() {
-  }
+  ngOnInit() {}
 }

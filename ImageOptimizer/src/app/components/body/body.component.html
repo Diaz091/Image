@@ -11,14 +11,12 @@
             </div>
 
             <img id="img" [src]="imgURL" *ngIf="imgURL" class="w-full mb-4 shadow-md block">
-
             <table class="table">
                 <thead class="thead=dark">
                     <tr>
                         <th>Name</th>
                         <th>Tamaño</th>
                         <th>Type</th>
-                        <!-- <th>Height</th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -26,7 +24,6 @@
                         <td>{{archivo.nombreArchivo | slice:0:archivo.nombreArchivo.length-4}}</td>
                         <td>{{archivo.archivo.size / 1024 / 1024 | number: '.2-2'}} MB</td>
                         <td>{{archivo.archivo.type }}</td>
-                        <!-- <td></td> -->
                     </tr>
                 </tbody>
             </table>
@@ -34,12 +31,7 @@
             <button (click)="compressFile()" class="bg-blue border-blue border-4 text-white py-1 px-2 rounded mr-4 hover:bg-teal-dark hover:border-teal-dark">Optimice</button>
             <button (click)="clearInput()" class="bg-blue border-blue border-4 text-white py-1 px-2 rounded mr-4 hover:bg-teal-dark hover:border-teal-dark">Clear</button>
 
-            <label>Height: 
-                <input id="height" style="border: 2px solid black; margin-right: 5px" type="text" size="5"  [(ngModel)]="num" >
-
-            </label>
-
-
+            <label> Height: <input id="height" style="border: 2px solid black; margin-right: 5px" type="text" size="5"  [(ngModel)]="num" > </label>
 
         </div>
 
