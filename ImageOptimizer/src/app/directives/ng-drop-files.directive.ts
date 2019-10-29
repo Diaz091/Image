@@ -10,7 +10,7 @@ export class NgDropFilesDirective {
 
   @Input() archivos: FileItem[] = [];
   @Output() mouseSobre: EventEmitter<boolean> = new EventEmitter();
-  // @Output() changeImg:  EventEmitter<boolean> = new EventEmitter();
+  
 
   constructor() { }
 
@@ -54,13 +54,10 @@ export class NgDropFilesDirective {
     for ( const propiedad in Object.getOwnPropertyNames( archivosLista ) ) {
       const archivoTemportal = archivosLista[ propiedad ];
       if ( this._canBeLoaded( archivoTemportal ) ) {
-
         const nuevoArchivo = new FileItem( archivoTemportal );
         this.archivos.push( nuevoArchivo );
-
       }
     }
-    console.log( this.archivos);
   }
 
   // Validaciones
