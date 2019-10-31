@@ -9,6 +9,10 @@ export class ToolbarComponent implements OnInit {
 
   constructor() { }
 
+
+  downloadImage() {
+  
+  }
   ngOnInit() {
   }
 

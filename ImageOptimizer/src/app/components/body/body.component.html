@@ -6,11 +6,15 @@
 
             <div appNgDropFiles [archivos]="archivos" (mouseSobre)="estaSobreElemento = $event" [ngClass]="{'file-over': estaSobreElemento}" class="flex-1 upload-btn-wrapper">
                 <button>
-                    <input #file type="file" ng-Model="files" accept='image/*' (change)="preview(file.files)"/>
-                </button>
+          <input #file type="file" ng-Model="files" accept='image/*' (change)="preview(file.files)"
+            (change)="fileChangeEvent($event)" />
+        </button>
             </div>
 
-            <img id="img" [src]="imgURL" *ngIf="imgURL" class="w-full mb-4 shadow-md block">
+            <image-cropper *ngIf="imageChangedEvent" [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="false" [aspectRatio]="4 / 3" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
+            </image-cropper>
+            <img id="img" [src]="croppedImage" />
+            <!--<img id="img" [src]="imgURL" *ngIf="imgURL" class="w-full mb-4 shadow-md block">-->
             <table class="table">
                 <thead class="thead=dark">
                     <tr>
@@ -31,12 +35,16 @@
             <button (click)="compressFile()" class="bg-blue border-blue border-4 text-white py-1 px-2 rounded mr-4 hover:bg-teal-dark hover:border-teal-dark">Submit</button>
             <button (click)="clearInput()" class="bg-blue border-blue border-4 text-white py-1 px-2 rounded mr-4 hover:bg-teal-dark hover:border-teal-dark">Clear</button>
 
-            <label> Height: <input style="border: 2px solid black; margin-right: 5px" type="text" size="5"  [(ngModel)]="num" > </label>
+            <label> Height: <input style="border: 2px solid black; margin-right: 5px" type="text" size="5" [(ngModel)]="num">
+      </label>
 
         </div>
 
         <div class=" flex-1 p-8 border ">
+
             <img [src]="imgURLCompress" *ngIf="imgURLCompress" class="w-full mb-4 shadow-md block">
+
+
         </div>
     </div>
 </div>

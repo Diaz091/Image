@@ -10,6 +10,7 @@ import { MatToolbarModule, MatMenuModule, MatIconModule, MatSidenavModule, MatLi
 
 import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
 import {NgxImageCompressService, } from 'ngx-image-compress';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {NgxImageCompressService, } from 'ngx-image-compress';
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
-    FormsModule
+    FormsModule,
+    ImageCropperModule
   ],
   providers: [NgxImageCompressService],
   bootstrap: [AppComponent]

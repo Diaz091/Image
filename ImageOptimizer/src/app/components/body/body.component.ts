@@ -8,22 +8,44 @@ import {
 import {
   FileItem
 } from 'src/app/models/file-item';
-
+import {
+  ImageCroppedEvent
+} from 'ngx-image-cropper';
 
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
   styleUrls: ['./body.component.css']
 })
+
 export class BodyComponent implements OnInit {
 
   public imagePath;
   public message: string;
   imgURL: any = 'assets/img/preview.png';
-  imgURLCompress: any = 'assets/img/preview.png';
+  imgURLCompress: any = '';
   archivos: FileItem[] = [];
   num = '';
 
+  // Crop
+  imageChangedEvent: any = '';
+  croppedImage: any = '';
+
+  fileChangeEvent(event: any): void {
+    this.imageChangedEvent = event;
+  }
+  imageCropped(event: ImageCroppedEvent) {
+    this.croppedImage = event.base64;
+  }
+  imageLoaded() {
+    // show cropper
+  }
+  cropperReady() {
+    // cropper ready
+  }
+  loadImageFailed() {
+    // show message
+  }
   constructor(private imageCompress: NgxImageCompressService) {}
 
   preview(files) {
@@ -54,23 +76,25 @@ export class BodyComponent implements OnInit {
   compressFile() {
     let ratio: number;
     const myImg = document.getElementById('img') as HTMLImageElement;
+    const image = myImg.src;
+
     // Default Image Width
     const defaultWidth = myImg.naturalWidth;
     // Default Image Height
     const defaultHeight = myImg.naturalHeight;
     // tslint:disable-next-line: radix
     const numParsed = parseInt(this.num);
-    if ( !isNaN( numParsed ) &&  numParsed > 1024 )  {
+    if (!isNaN(numParsed) && numParsed > 1024) {
 
       // Comprobamos cual de los lados es mayor.
-      if ( defaultHeight > defaultWidth ) {
-        ratio = (100 / (defaultHeight / numParsed ) );
+      if (defaultHeight > defaultWidth) {
+        ratio = (100 / (defaultHeight / numParsed));
       } else {
-        ratio = (100 / (defaultWidth / numParsed ) );
+        ratio = (100 / (defaultWidth / numParsed));
       }
 
     } else { // If they don't insert any Height(Input) or Height(Input) < 1024
-      if ( defaultHeight > defaultWidth ) {
+      if (defaultHeight > defaultWidth) {
         ratio = (100 / (defaultHeight / 1024));
       } else {
         ratio = (100 / (defaultWidth / 1024));
@@ -79,11 +103,11 @@ export class BodyComponent implements OnInit {
 
     // tslint:disable-next-line: prefer-const
     let orientation: any;
-    this.imageCompress.compressFile(this.imgURL, orientation, ratio, 100).then(
+    this.imageCompress.compressFile(image, orientation, ratio, 100).then(
       result => {
-          this.imgURLCompress = result;
-        }
-      );
+        this.imgURLCompress = result;
+      }
+    );
   }
 
   ngOnInit() {}
