@@ -5,12 +5,14 @@ import {FormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { BodyComponent } from './components/body/body.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { PdfViewerComponent } from './components/pdf-viewer/pdf-viewer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule, MatMenuModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from '@angular/material';
 
 import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
 import {NgxImageCompressService, } from 'ngx-image-compress';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { FinnaPdfViewerModule } from 'finna-pdf-viewer';
 
 
 @NgModule({
@@ -18,7 +20,8 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     AppComponent,
     ToolbarComponent,
     BodyComponent,
-    NgDropFilesDirective
+    NgDropFilesDirective,
+    PdfViewerComponent
 
 
   ],
@@ -32,7 +35,8 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     MatIconModule,
     MatMenuModule,
     FormsModule,
-    ImageCropperModule
+    ImageCropperModule,
+    FinnaPdfViewerModule
   ],
   providers: [NgxImageCompressService],
   bootstrap: [AppComponent]
