@@ -1,9 +1,3 @@
-/* .upload-btn-wrapper {
-    border: dotted 3px lightgray;
-    background-image: url('/home/udiaz/Pruebas/HardStuck/src/assets/img/drop-images.png');
-    overflow: hidden;
-} */
-
 .upload-btn-wrapper {
     border: dotted 3px lightgray;
     background-repeat: no-repeat;
@@ -31,4 +25,12 @@ input {
 
 .bton {
     width: 100%;
+}
+
+.out {
+    display: inherit;
+}
+
+.in {
+    display: none
 }

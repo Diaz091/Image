@@ -10,6 +10,7 @@ export class FileItem {
     constructor( archivo: File ) {
         this.archivo = archivo;
         this.nombreArchivo = archivo.name;
+        this.type = archivo.type;
 
     }
 

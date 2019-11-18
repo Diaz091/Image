@@ -52,22 +52,34 @@
     <app-toolbar></app-toolbar>
     <div class="flex">
         <div class=" flex-1 p-8 border ">
+
             <label class="block tracking-wide text-grey-darker text sm font-bold mb-2"> Select or Drag an input FILE </label>
+
             <div appNgDropFiles class="flex-1 upload-btn-wrapper" [archivos]="archivos" (mouseSobre)="estaSobreElemento = $event" [ngClass]="{'file-over': estaSobreElemento}">
                 <button class="bton">
-                    <input #file type="file" ng-Model="files" accept='image/jpeg,image/png,application/pdf' (change)="fileChangeEvent($event)" />
+                    <input #file type="file" ng-Model="files" accept='image/jpeg,image/png,application/pdf' (change)="fileChangeEvent($event); onFileSelected(file.files);" />
                 </button>
             </div>
-            <div [ngStyle]="view">
-                <!-- (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()" (change)="preview(file.files)" -->
-                <image-cropper *ngIf="imageChangedEvent" [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="false" [aspectRatio]="4 / 3" format="png" (imageCropped)="imageCropped($event)"></image-cropper>
-                <div class=" flex-1">
-                    <button class="bg-blue border-blue border-4 text-white py-1 px-2 rounded mr-4 hover:bg-teal-dark hover:border-teal-dark" (click)="compressFile()">Submit</button>
-                    <button class="bg-blue border-blue border-4 text-white py-1 px-2 rounded mr-4 hover:bg-teal-dark hover:border-teal-dark" (click)="clearInput()">Clear</button>
-                    <label> Height: <input style="border: 2px solid black; margin-right: 5px" type="text" size="5" [(ngModel)]="num"> </label>
+
+            <div [className]="onFileSelected ? 'in' : 'out' ">
+                <!-- (imageLoaded)=" imageLoaded() " (cropperReady)="cropperReady() " (loadImageFailed)="loadImageFailed() " (change)="preview(file.files) " -->
+                <image-cropper *ngIf="imageChangedEvent " [imageChangedEvent]="imageChangedEvent " [maintainAspectRatio]="false " [aspectRatio]="4 / 3 " format="png " (imageCropped)="imageCropped($event) "></image-cropper>
+
+                <div class=" flex-1 ">
+                    <button class="bg-blue border-blue border-4 text-white py-1 px-2 rounded mr-4 hover:bg-teal-dark hover:border-teal-dark " (click)="compressFile() ">Submit</button>
+                    <button class="bg-blue border-blue border-4 text-white py-1 px-2 rounded mr-4 hover:bg-teal-dark hover:border-teal-dark " (click)="clearInput() ">Clear</button>
+                    <label> Height: <input style="border: 2px solid black; margin-right: 5px " type="text " size="5 " [(ngModel)]="num "> </label>
                 </div>
 
-                <img id="img" [src]="croppedImage" />
+                <img id="img " [src]="croppedImage " />
+
             </div>
+
+            <div [className]="onFileSelected ? 'in' : 'out' ">
+
+                <app-pdf-viewer></app-pdf-viewer>
+
+            </div>
+
         </div>
     </div>

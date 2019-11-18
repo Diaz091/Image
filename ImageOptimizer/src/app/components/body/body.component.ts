@@ -18,15 +18,14 @@ import {
   styleUrls: ['./body.component.css']
 })
 
-export class BodyComponent{
+export class BodyComponent {
 
   public imagePath: string;
   public message: string;
-  imgURL: any = 'assets/img/preview.png';
   imgURLCompress: any = '';
   archivos: FileItem[] = [];
-  num = '';
-  view ='';
+  num   = '';
+  view = '';
   imageChangedEvent: any = '';
   croppedImage: any = '';
 
@@ -65,6 +64,7 @@ export class BodyComponent{
         ratio = (100 / (defaultWidth / 1024));
       }
     }
+
     // tslint:disable-next-line: prefer-const
     let orientation: any;
     this.imageCompress.compressFile(image, orientation, ratio, 100).then(
@@ -75,10 +75,21 @@ export class BodyComponent{
   }
 
 
+  onFileSelected(files) {
+    if (files.length > 0) {
+      console.log(files[0].type.split('/')[0]);
+
+      if ( (files[0].type.split('/')[0]) === 'image' ) {
+        return true;
+     } else {
+       return false;
+     }
+    }
+  }
+
+
   clearInput() {
-    this.imgURL = 'assets/img/preview.png';
-    this.imgURLCompress = 'assets/img/preview.png';
-    this.archivos = [];
+
   }
 
 
@@ -104,6 +115,6 @@ export class BodyComponent{
   //   READER.readAsDataURL(files[0]);
   //   // tslint:disable-next-line: variable-name
   //   READER.onload = (_event) => {
-  //     this.imgURL = READER.result; 
+  //     this.imgURL = READER.result;
   //   };
   // }

@@ -1,6 +1,6 @@
-import { Directive, EventEmitter, ElementRef, HostListener, Input, Output, Injectable } from '@angular/core';
+import { Directive, EventEmitter,  HostListener, Input, Output, Injectable } from '@angular/core';
 import { FileItem } from '../models/file-item';
-
+// DRAG AND DROP 
 
 
 @Directive({
@@ -10,7 +10,8 @@ export class NgDropFilesDirective {
 
   @Input() archivos: FileItem[] = [];
   @Output() mouseSobre: EventEmitter<boolean> = new EventEmitter();
-  
+  @Output() fileImage: EventEmitter<boolean> = new EventEmitter();
+
 
   constructor() { }
 
@@ -63,7 +64,6 @@ export class NgDropFilesDirective {
   // Validaciones
   private _canBeLoaded( archivo: File ): boolean {
     if ( !this._archivoDropped( archivo.name ) ) {
-      // Change Preview IMG into Dropped IMG
       return true;
     } else {
       return false;
