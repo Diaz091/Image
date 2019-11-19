@@ -28,9 +28,9 @@ input {
 }
 
 .out {
-    display: inherit;
+    display: none;
 }
 
 .in {
-    display: none
+    display: inherit;
 }

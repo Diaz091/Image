@@ -77,12 +77,12 @@ export class BodyComponent {
 
   onFileSelected(files) {
     if (files.length > 0) {
-      console.log(files[0].type.split('/')[0]);
-
       if ( (files[0].type.split('/')[0]) === 'image' ) {
-        return true;
+        document.getElementById('image').className = 'in';
+        document.getElementById('pdf').className = 'out';
      } else {
-       return false;
+        document.getElementById('pdf').className = 'in';
+        document.getElementById('image').className = 'out';
      }
     }
   }

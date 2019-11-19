@@ -57,13 +57,17 @@
 
             <div appNgDropFiles class="flex-1 upload-btn-wrapper" [archivos]="archivos" (mouseSobre)="estaSobreElemento = $event" [ngClass]="{'file-over': estaSobreElemento}">
                 <button class="bton">
-                    <input #file type="file" ng-Model="files" accept='image/jpeg,image/png,application/pdf' (change)="fileChangeEvent($event); onFileSelected(file.files);" />
-                </button>
+          <input #file type="file" ng-Model="files" accept='image/jpeg,image/png,application/pdf'
+            (change)="fileChangeEvent($event); onFileSelected(file.files);" />
+        </button>
             </div>
 
-            <div [className]="onFileSelected ? 'in' : 'out' ">
+            <div id="image" class="out">
+
+                <!-- [className]="onFileSelected ? 'in' : 'out' " -->
                 <!-- (imageLoaded)=" imageLoaded() " (cropperReady)="cropperReady() " (loadImageFailed)="loadImageFailed() " (change)="preview(file.files) " -->
-                <image-cropper *ngIf="imageChangedEvent " [imageChangedEvent]="imageChangedEvent " [maintainAspectRatio]="false " [aspectRatio]="4 / 3 " format="png " (imageCropped)="imageCropped($event) "></image-cropper>
+                <image-cropper *ngIf="imageChangedEvent " [imageChangedEvent]="imageChangedEvent " [maintainAspectRatio]="false " [aspectRatio]="4 / 3 " format="png " (imageCropped)="imageCropped($event) ">
+                </image-cropper>
 
                 <div class=" flex-1 ">
                     <button class="bg-blue border-blue border-4 text-white py-1 px-2 rounded mr-4 hover:bg-teal-dark hover:border-teal-dark " (click)="compressFile() ">Submit</button>
@@ -72,14 +76,15 @@
                 </div>
 
                 <img id="img " [src]="croppedImage " />
-
-            </div>
-
-            <div [className]="onFileSelected ? 'in' : 'out' ">
-
-                <app-pdf-viewer></app-pdf-viewer>
-
             </div>
 
         </div>
+    </div>
+
+
+
+    <div id="pdf" class="out">
+
+        <app-pdf-viewer></app-pdf-viewer>
+
     </div>
