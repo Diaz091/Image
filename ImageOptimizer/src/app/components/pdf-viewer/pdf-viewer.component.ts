@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FinnaPdfViewerModule } from 'finna-pdf-viewer';
 
 
 @Component({
@@ -9,7 +10,6 @@ import { Component, OnInit } from '@angular/core';
 export class PdfViewerComponent implements OnInit {
 
   constructor() { }
-
   ngOnInit() {
   }
 

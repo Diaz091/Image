@@ -13,6 +13,8 @@ import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
 import {NgxImageCompressService, } from 'ngx-image-compress';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { FinnaPdfViewerModule } from 'finna-pdf-viewer';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { FinnaPdfViewerModule } from 'finna-pdf-viewer';
     MatMenuModule,
     FormsModule,
     ImageCropperModule,
-    FinnaPdfViewerModule
+    FinnaPdfViewerModule,
+    PdfViewerModule,
+    NgxExtendedPdfViewerModule
   ],
   providers: [NgxImageCompressService],
   bootstrap: [AppComponent]
