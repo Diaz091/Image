@@ -25,7 +25,8 @@ export class BodyComponent {
   imgURLCompress: any = '';
   archivos: FileItem[] = [];
   num   = '';
-  view = '';
+  pdf = '';
+  // '../assets/TAPO.pdf'
   imageChangedEvent: any = '';
   croppedImage: any = '';
 
@@ -77,6 +78,7 @@ export class BodyComponent {
 
   onFileSelected(files) {
     if (files.length > 0) {
+      this.pdf = files[0];
       if ( (files[0].type.split('/')[0]) === 'image' ) {
         document.getElementById('image').className = 'in';
         document.getElementById('pdf').className = 'out';

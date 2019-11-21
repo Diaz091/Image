@@ -20,8 +20,6 @@ hr {
     overflow: visible
 } */
 
-
-/* 
 pre {
     font-family: monospace, monospace;
     font-size: 1em
@@ -180,11 +178,12 @@ html {
     font-family: sans-serif
 }
 
-*,
+
+/* *,
  ::after,
  ::before {
     box-sizing: inherit
-}
+} */
 
 blockquote,
 dd,
@@ -22771,4 +22770,4 @@ body {
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
-} */
+}

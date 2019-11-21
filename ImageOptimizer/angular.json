@@ -24,11 +24,6 @@
                             "src/assets",
                             {
                                 "glob": "**/*",
-                                "input": "node_modules/finna-pdf-viewer/assets/locale",
-                                "output": "/assets/locale/"
-                            },
-                            {
-                                "glob": "**/*",
                                 "input": "node_modules/ngx-extended-pdf-viewer/assets/locale",
                                 "output": "/assets/locale/"
                             },
@@ -48,9 +43,6 @@
                             "src/styles.css"
                         ],
                         "scripts": [
-                            "node_modules/finna-pdf-viewer/assets/pdf.js",
-                            "node_modules/finna-pdf-viewer/assets/pdf.worker.js",
-                            "node_modules/finna-pdf-viewer/assets/viewer.js",
                             "node_modules/ngx-extended-pdf-viewer/assets/pdf.js",
                             "node_modules/ngx-extended-pdf-viewer/assets/viewer.js"
                         ]

@@ -1,89 +1,31 @@
-<!-- <div class="container mx-auto">
-    <div class="flex">
+<div>
+    <br>
+    <label class="block tracking-wide text-grey-darker text sm font-bold mb-2"> Input a FILE </label>
 
-        <div class=" flex-1 p-8 border ">
-            <label class="block tracking-wide text-grey-darker text sm font-bold mb-2"> Select or Drag an input FILE </label>
-
-            <div appNgDropFiles [archivos]="archivos" (mouseSobre)="estaSobreElemento = $event" [ngClass]="{'file-over': estaSobreElemento}" class="flex-1 upload-btn-wrapper">
-                <button>
-          <input #file type="file" ng-Model="files" accept='image/jpeg,image/png,application/pdf'
-            (change)="preview(file.files)" (change)="fileChangeEvent($event)" />
-        </button>
-            </div>
-
-            <image-cropper *ngIf="imageChangedEvent" [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="false" [aspectRatio]="4 / 3" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()"></image-cropper>
-
-            <img id="img" [src]="croppedImage" /> -->
-<!--<img id="img" [src]="imgURL" *ngIf="imgURL" class="w-full mb-4 shadow-md block">-->
-<!-- <table class="table">
-                <thead class="thead=dark">
-                    <tr>
-                        <th>Name</th>
-                        <th>Tamaño</th>
-                        <th>Type</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let archivo of archivos">
-                        <td>{{archivo.nombreArchivo | slice:0:archivo.nombreArchivo.length-4}}</td>
-                        <td>{{archivo.archivo.size / 1024 / 1024 | number: '.2-2'}} MB</td>
-                        <td>{{archivo.archivo.type }}</td>
-                    </tr>
-                </tbody>
-            </table> -->
-<!-- 
-            <button (click)="compressFile()" class="bg-blue border-blue border-4 text-white py-1 px-2 rounded mr-4 hover:bg-teal-dark hover:border-teal-dark">Submit</button>
-            <button (click)="clearInput()" class="bg-blue border-blue border-4 text-white py-1 px-2 rounded mr-4 hover:bg-teal-dark hover:border-teal-dark">Clear</button>
-
-            <label> Height: <input style="border: 2px solid black; margin-right: 5px" type="text" size="5" [(ngModel)]="num"> </label>
-
-        </div>
-
-        <div class=" flex-1 p-8 border ">
-            <app-pdf-viewer></app-pdf-viewer>
-            <img [src]="imgURLCompress" *ngIf="imgURLCompress" class="w-full mb-4 shadow-md block">
-
-        </div>
+    <div appNgDropFiles class="flex-1 upload-btn-wrapper" [archivos]="archivos" (mouseSobre)="estaSobreElemento = $event" [ngClass]="{'file-over': estaSobreElemento}">
+        <button class="bton">
+      <input #file type="file" ng-Model="files" accept='image/jpeg,image/png,application/pdf'
+        (change)="fileChangeEvent($event); onFileSelected(file.files);" />
+    </button>
     </div>
 
-</div> -->
-<!-- 
-<div class="container mx-auto">
-    <app-toolbar></app-toolbar>
-    <div class="flex">
-        <div class=" flex-1 p-8 border ">
+</div>
 
-            <label class="block tracking-wide text-grey-darker text sm font-bold mb-2"> Input a FILE </label>
+<div id="image" class="out">
+    <image-cropper *ngIf="imageChangedEvent " [imageChangedEvent]="imageChangedEvent " [maintainAspectRatio]="false " [aspectRatio]="4 / 3 " format="png " (imageCropped)="imageCropped($event) ">
+    </image-cropper>
 
-            <div appNgDropFiles class="flex-1 upload-btn-wrapper" [archivos]="archivos" (mouseSobre)="estaSobreElemento = $event" [ngClass]="{'file-over': estaSobreElemento}">
-                <button class="bton">
-          <input #file type="file" ng-Model="files" accept='image/jpeg,image/png,application/pdf'
-            (change)="fileChangeEvent($event); onFileSelected(file.files);" />
-        </button>
-            </div>
+    <div class=" flex-1 ">
+        <button class="bg-blue border-blue border-4 text-white py-1 px-2 rounded mr-4 hover:bg-teal-dark hover:border-teal-dark " (click)="compressFile() ">Submit</button>
+        <button class="bg-blue border-blue border-4 text-white py-1 px-2 rounded mr-4 hover:bg-teal-dark hover:border-teal-dark " (click)="clearInput() ">Clear</button>
+        <label> Height: <input style="border: 2px solid black; margin-right: 5px " type="text " size="2" [(ngModel)]="num ">
+    </label>
+    </div>
 
-            <div id="image" class="out">
+    <img id="img " [src]="croppedImage " />
+</div>
 
-                [className]="onFileSelected ? 'in' : 'out' " (imageLoaded)=" imageLoaded() " (cropperReady)="cropperReady() " (loadImageFailed)="loadImageFailed() " (change)="preview(file.files) "
-                <image-cropper *ngIf="imageChangedEvent " [imageChangedEvent]="imageChangedEvent " [maintainAspectRatio]="false " [aspectRatio]="4 / 3 " format="png " (imageCropped)="imageCropped($event) ">
-                </image-cropper>
-
-                <div class=" flex-1 ">
-                    <button class="bg-blue border-blue border-4 text-white py-1 px-2 rounded mr-4 hover:bg-teal-dark hover:border-teal-dark " (click)="compressFile() ">Submit</button>
-                    <button class="bg-blue border-blue border-4 text-white py-1 px-2 rounded mr-4 hover:bg-teal-dark hover:border-teal-dark " (click)="clearInput() ">Clear</button>
-                    <label> Height: <input style="border: 2px solid black; margin-right: 5px " type="text " size="5 " [(ngModel)]="num "> </label>
-                </div>
-
-                <img id="img " [src]="croppedImage " />
-            </div>
-
-        </div>
-    </div> -->
-
-
-
-<!-- <div id="pdf" class="out"> -->
-
-<app-pdf-viewer></app-pdf-viewer>
-
-<!-- </div> -->
+<div id="pdf" class="out">
+    <ngx-extended-pdf-viewer [src]="pdf" backgroundColor="#ffffff" [height]="'90vh'" [useBrowserLocale]="true">
+    </ngx-extended-pdf-viewer>
+</div>
