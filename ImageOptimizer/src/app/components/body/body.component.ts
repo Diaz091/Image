@@ -24,9 +24,8 @@ export class BodyComponent {
   public message: string;
   imgURLCompress: any = '';
   archivos: FileItem[] = [];
-  num   = '';
+  num = '';
   pdf = '';
-  // '../assets/TAPO.pdf'
   imageChangedEvent: any = '';
   croppedImage: any = '';
 
@@ -44,7 +43,7 @@ export class BodyComponent {
     let ratio: number;
     const myImg = document.getElementById('img') as HTMLImageElement;
     const image = myImg.src;
-
+    
     // Default Image Width
     const defaultWidth = myImg.naturalWidth;
     // Default Image Height
@@ -65,16 +64,16 @@ export class BodyComponent {
         ratio = (100 / (defaultWidth / 1024));
       }
     }
-
+    
     // tslint:disable-next-line: prefer-const
     let orientation: any;
     this.imageCompress.compressFile(image, orientation, ratio, 100).then(
       result => {
-        this.imgURLCompress = result;
+        // this.imgURLCompress = result;
+        this.croppedImage = result;
       }
     );
   }
-
 
   onFileSelected(files) {
     if (files.length > 0) {
@@ -88,13 +87,6 @@ export class BodyComponent {
      }
     }
   }
-
-
-  clearInput() {
-
-  }
-
-
 }
 
 

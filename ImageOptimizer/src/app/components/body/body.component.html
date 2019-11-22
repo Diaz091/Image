@@ -16,16 +16,15 @@
     </image-cropper>
 
     <div class=" flex-1 ">
-        <button class="bg-blue border-blue border-4 text-white py-1 px-2 rounded mr-4 hover:bg-teal-dark hover:border-teal-dark " (click)="compressFile() ">Submit</button>
-        <button class="bg-blue border-blue border-4 text-white py-1 px-2 rounded mr-4 hover:bg-teal-dark hover:border-teal-dark " (click)="clearInput() ">Clear</button>
-        <label> Height: <input style="border: 2px solid black; margin-right: 5px " type="text " size="2" [(ngModel)]="num ">
+        <button class="bg-blue border-blue border-4 text-white py-1 px-2 rounded mr-4 hover:bg-teal-dark hover:border-teal-dark " (click)="compressFile()">Submit</button>
+        <!-- <button class="bg-blue border-blue border-4 text-white py-1 px-2 rounded mr-4 hover:bg-teal-dark hover:border-teal-dark ">Clear</button> -->
+        <label> Height: <input style="border: 2px solid black; margin-right: 5px " type="text " size="4" [(ngModel)]="num ">
     </label>
     </div>
 
-    <img id="img " [src]="croppedImage " />
+    <img id="img" [src]="croppedImage " />
 </div>
 
 <div id="pdf" class="out">
-    <ngx-extended-pdf-viewer [src]="pdf" backgroundColor="#ffffff" [height]="'90vh'" [useBrowserLocale]="true">
-    </ngx-extended-pdf-viewer>
+    <ngx-extended-pdf-viewer [src]="pdf" backgroundColor="#ffffff" [height]="'90vh'" [useBrowserLocale]="true"> </ngx-extended-pdf-viewer>
 </div>
