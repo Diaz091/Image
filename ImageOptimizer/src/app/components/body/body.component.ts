@@ -43,7 +43,7 @@ export class BodyComponent {
     let ratio: number;
     const myImg = document.getElementById('img') as HTMLImageElement;
     const image = myImg.src;
-    
+
     // Default Image Width
     const defaultWidth = myImg.naturalWidth;
     // Default Image Height
@@ -64,7 +64,7 @@ export class BodyComponent {
         ratio = (100 / (defaultWidth / 1024));
       }
     }
-    
+
     // tslint:disable-next-line: prefer-const
     let orientation: any;
     this.imageCompress.compressFile(image, orientation, ratio, 100).then(
@@ -88,27 +88,3 @@ export class BodyComponent {
     }
   }
 }
-
-
-
-
-
-
-  // preview(files) {
-
-  //   if (files.length === 0) {
-  //     return;
-  //   }
-  //   const MIMETYPE = files[0].type;
-  //   if (MIMETYPE.match(/image\/*/) == null) {
-  //     this.message = 'Only images are supported.';
-  //     return;
-  //   }
-  //   const READER = new FileReader();
-  //   this.imagePath = files;
-  //   READER.readAsDataURL(files[0]);
-  //   // tslint:disable-next-line: variable-name
-  //   READER.onload = (_event) => {
-  //     this.imgURL = READER.result;
-  //   };
-  // }
