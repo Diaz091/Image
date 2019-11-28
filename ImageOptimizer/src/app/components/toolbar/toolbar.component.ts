@@ -11,7 +11,7 @@ export class ToolbarComponent implements OnInit {
 
 
   downloadImage() {
-  
+
   }
   ngOnInit() {
   }
